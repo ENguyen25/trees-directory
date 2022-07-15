@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import Airtable from "airtable";
+import Trees from "./components/Trees";
+
+const base = new Airtable({apiKey: 'keycVUqNgXbPQmTBb'}).base('apppAm9jBXoifxazs');
 
 function App() {
+  const [trees, setTrees] = useState([]);
+  
+  useEffect(() => {
+    base("Our Trees")
+    .select({ view: "Grid view", pageSize: 20 })
+    .eachPage((records, fetchNextPage) => {
+      setTrees(records);
+      fetchNextPage();
+    })
+
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>Our Trees</h1>
+      {trees.map(tree => (
+        <Trees key={tree.id} treeData={tree} />
+      ))}
+    </>
   );
+    
 }
 
 export default App;
