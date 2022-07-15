@@ -49,13 +49,17 @@ function App() {
       <input type="text" placeholder="Search" onChange={(e) => searchItems(e.target.value)} />
 
       {searchInput !== '' ? (
-        filteredResults.map((tree) => (
-          <Trees key={tree.getId()} treeData={tree} />
-        ))
+        filteredResults.map((tree) => {
+          return (
+            <Trees key={tree.getId()} treeData={tree} />
+          )
+        }) 
       ) : (
-        trees.slice(0, next).map((tree) => (
-        <Trees key={tree.getId()} treeData={tree} />
-      )))
+        trees.slice(0, next).map((tree) => {
+          return (
+            <Trees key={tree.getId()} treeData={tree} />
+          )
+        }))
       }
 
       {next < trees.length && (
