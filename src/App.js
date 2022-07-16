@@ -17,7 +17,7 @@ function App() {
   
   useEffect(() => {
     base("Our Trees")
-      .select({ view: "Grid view", pageSize: 20, maxRecords: 20 })
+      .select({ view: "Grid view", pageSize: 20 })
       .eachPage((records, fetchNextPage) => {
         setTrees((prevState) => [...prevState, ...records]);
         fetchNextPage();
@@ -48,7 +48,7 @@ function App() {
       <h1>Our Trees</h1>
       <input type="text" placeholder="Search" onChange={(e) => searchItems(e.target.value)} />
 
-      {searchInput !== '' ? (
+      {searchInput.length > 1 ? (
         filteredResults.map((tree) => {
           return (
             <Trees key={tree.getId()} treeData={tree} />
