@@ -49,8 +49,9 @@ function App() {
   };
 
   const searchItems = (searchValue) => {
+    setFilter(false);
     setSearchInput(searchValue);
-    if (searchInput.length !== "") {
+    if (searchInput !== "") {
       const filteredData = trees.filter((tree) => {
         const botanicalName = tree.fields["Botanical Name"]
           .toLowerCase()
@@ -73,7 +74,7 @@ function App() {
 
   const plantOrTree = (value) => {
     const filteredData = trees.filter((tree) => {
-      return tree.fields["Plant or Tree"][0].toLowerCase().includes(value);
+      return tree.fields["Plant or Tree"].toString().includes(value);
     });
 
     setFilter(true);
@@ -99,8 +100,8 @@ function App() {
         placeholder="Search"
         onChange={(e) => searchItems(e.target.value)}
       />
-      <button onClick={() => plantOrTree("plant")}>Plant</button>
-      <button onClick={() => plantOrTree("tree")}>Tree</button>
+      <button onClick={() => plantOrTree("Plant")}>Plant</button>
+      <button onClick={() => plantOrTree("Tree")}>Tree</button>
       {productsAndUsesArray.map((products) => (
         <button onClick={() => productsAndUses(products)}>{products}</button>
       ))}
