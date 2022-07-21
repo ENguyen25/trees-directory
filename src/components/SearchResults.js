@@ -9,7 +9,7 @@ const base = new Airtable({ apiKey: "keycVUqNgXbPQmTBb" }).base(
 
 const treesPerRow = 20;
 
-function LandingPage() {
+function SearchResults() {
   const [trees, setTrees] = useState([]);
   const [next, setNext] = useState(treesPerRow);
   const [searchInput, setSearchInput] = useState("");
@@ -122,4 +122,4 @@ function LandingPage() {
   );
 }
 
-export default LandingPage;
+export default SearchResults;

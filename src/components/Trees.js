@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Profile from './Profile';
 
 const Trees = ({ treeData }) => {
 
@@ -11,7 +10,6 @@ const Trees = ({ treeData }) => {
       </Link>
         <p>{treeData.fields["Family Botanical Name"]}</p>
         <p>{treeData.fields["Other Known Names"]}</p>
-        <p>{treeData.fields["Tree Profile"]}</p>
         <p>{treeData.fields["Plant or Tree"]}</p>
         {treeData.fields["Products and Uses"] !== undefined
           ? treeData.fields["Products and Uses"].map((product) => (
