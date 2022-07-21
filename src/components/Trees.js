@@ -9,7 +9,9 @@ const Trees = ({ treeData }) => {
         <p>{treeData.fields["Other Known Names"]}</p>
         <p>{treeData.fields["Tree Profile"]}</p>
         <p>{treeData.fields["Plant or Tree"]}</p>
-        <p>{treeData.fields["Products and Uses"]}</p>
+        {treeData.fields["Products and Uses"].map((product) => (
+          <p>{product}</p>
+        ))}
     </div>
   )
 }
