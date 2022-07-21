@@ -37,7 +37,7 @@ function App() {
 
   useEffect(() => {
     base("Our Trees")
-      .select({ view: "Grid view" })
+      .select({ view: "Grid view", maxRecords: 665 })
       .eachPage((records, fetchNextPage) => {
         setTrees((current) => [...current, ...records])
         fetchNextPage();
