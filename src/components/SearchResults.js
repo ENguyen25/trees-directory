@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Airtable from "airtable";
+import Container from "react-bootstrap/Container";
 
 import Trees from "./Trees";
 
@@ -95,7 +96,6 @@ function SearchResults() {
 
   return (
     <>
-      <h1>Our Trees</h1>
       <input
         type="text"
         placeholder="Search"
@@ -107,7 +107,7 @@ function SearchResults() {
         <button onClick={() => productsAndUses(products)}>{products}</button>
       ))}
 
-      {searchInput.length > 1 || filter === true
+      {/* {searchInput.length > 1 || filter === true
         ? filteredResults.map((tree) => {
             return <Trees key={tree.getId()} treeData={tree} />;
           })
@@ -117,7 +117,7 @@ function SearchResults() {
 
       {next < trees.length && (
         <button onClick={loadMoreTrees}>Load more</button>
-      )}
+      )} */}
     </>
   );
 }
