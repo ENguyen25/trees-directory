@@ -60,6 +60,10 @@ const Profile = () => {
             ? <img src={selectSpecies.fields["Image of Leaf"][0].thumbnails.large.url}></img>
             : null
           }
+          {selectSpecies.fields["Illustration"] !== undefined
+            ? <img src={selectSpecies.fields["Illustration"][0].thumbnails.large.url}></img>
+            : null
+          }
         </>
       )}
     </>
