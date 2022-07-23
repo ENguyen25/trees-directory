@@ -1,0 +1,63 @@
+.leftColumn {
+  width: 70vw;
+}
+
+.rightColumn {
+  width: 30vw;
+  padding: 30px;
+  float: right;
+  background-color: lightgray;
+}
+
+.searchCard {
+  display: block;
+}
+
+.searchBar {
+  margin-bottom: 20px;
+  margin-right: 10px;
+  padding: 5px 10px;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+}
+
+.tagButton {
+  margin-bottom: 10px;
+  margin-right: 10px;
+  padding: 5px 10px;
+  background: linear-gradient(rgba(60, 150, 107, 0.8), rgba(60, 150, 107, 0.6));
+  border: none;
+  border-radius: 10px;
+}
+
+.tagButton:hover {
+  background: linear-gradient(rgba(60, 150, 107, 0.6), rgba(60, 150, 107, 0.8));
+}
+
+.loadButton {
+  margin: 20px;
+}
+
+@media screen and (max-width: 1024px) {
+  .tagButton {
+    font-size: 90%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .leftColumn,
+  .rightColumn {
+    float: none;
+    width: 100%;
+  }
+  .searchBar {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .searchBar {
+    width: 100%;
+  }
+}
