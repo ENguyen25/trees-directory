@@ -18,6 +18,7 @@ const ImageGallery = () => {
 
   const settings = {
     dots: true,
+    lazyLoad: true,
     infinite: true,
     speed: 1000,
     slidesToShow: 6,
