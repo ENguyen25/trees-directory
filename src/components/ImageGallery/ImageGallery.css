@@ -1,6 +1,13 @@
 .carouselContainer {
   width: 96vw;
+}
+
+.carouselCard {
   padding-top: 3vh;
+}
+
+.carouselCard:hover {
+  background-color: #319fc2;
 }
 
 .carouselImage {
@@ -12,7 +19,10 @@
 .carouselCaption {
   text-decoration: none;
   color: white;
+  margin: 1vh 0 3vh 0;
+  text-align: center;
 }
+
 
 @media screen and (max-width: 768px) {
   .carousel {

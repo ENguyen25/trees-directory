@@ -11,7 +11,6 @@ function App() {
   return (
     <>
       <NavRouter>
-        <NavBar />
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route

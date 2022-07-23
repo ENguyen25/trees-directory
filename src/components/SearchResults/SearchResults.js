@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Airtable from "airtable";
 import "./SearchResults.css";
 
-import Trees from "./Trees";
+import Trees from "../Trees/Trees";
 
 const base = new Airtable({ apiKey: "keycVUqNgXbPQmTBb" }).base(
   "apppAm9jBXoifxazs"

@@ -37,6 +37,7 @@
 
 .tagButton:hover {
   background: #319fc2;
+  cursor: pointer;
 }
 
 .loadButton {

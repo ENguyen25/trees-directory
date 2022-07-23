@@ -5,7 +5,7 @@ import "./ImageGallery.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import imagesArray from "../assets/js/images";
+import imagesArray from "../../assets/js/images";
 
 const ImageGallery = () => {
   const randomImages = [];
@@ -17,7 +17,6 @@ const ImageGallery = () => {
   }
 
   const settings = {
-    autoplay: true,
     dots: true,
     infinite: true,
     speed: 1000,
@@ -30,8 +29,10 @@ const ImageGallery = () => {
       <Slider {...settings}>
         {randomImages.map((image) => (
           <div className="carouselCard">
-            <img className="carouselImage" src={image[2]}></img>
-            <p className="carouselCaption">{image[1]}</p>
+            <Link to={`/species/${image[0]}`}>
+              <img className="carouselImage" src={image[2]}></img>
+              <p className="carouselCaption">{image[1]}</p>
+            </Link>
           </div>
         ))}
       </Slider>
