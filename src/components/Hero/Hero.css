@@ -9,5 +9,31 @@
 
 .header {
   text-align: center;
-  padding: 10vh 0;
+  padding: 5vh 0;
+  font-family: "Source Sans Pro", "sans-serif";
+  font-weight: 200;
+  color: white;
+  animation: fadein 2s;
+  -moz-animation: fadein 2s; /* Firefox */
+  -webkit-animation: fadein 2s;
+}
+
+.heroTitle {
+  font-size: 80px;
+  margin: 0;
+}
+
+.heroSubtitle {
+  font-size: 50px;
+  margin: 0;
+}
+
+
+@keyframes fadein {
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
 }

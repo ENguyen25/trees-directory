@@ -7,8 +7,8 @@ const Hero = () => {
     <div className="hero">
       <NavBar />
       <div className="header">
-        <h1>Enjoy the trees of Peru</h1>
-        <h3>Scroll down to search for a plant or tree</h3>
+        <p className="heroTitle">Enjoy the trees of Peru</p>
+        <p className="heroSubtitle">Scroll down to search for a plant or tree</p>
       </div>
     </div>
   );
