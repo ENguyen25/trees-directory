@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import Airtable from "airtable";
+import './Profile.css';
 
 const base = new Airtable({ apiKey: "keycVUqNgXbPQmTBb" }).base(
   "apppAm9jBXoifxazs"
@@ -29,7 +30,7 @@ const Profile = () => {
   return (
     <>
       {selectSpecies !== null && (
-        <>
+        <div className="profilePage">
           <h1>{selectSpecies.fields["Botanical Name"]}</h1>
           <h2>{selectSpecies.fields["Family Botanical Name"]}</h2>
           <h2>{selectSpecies.fields["Other Known Names"]}</h2>
@@ -64,7 +65,7 @@ const Profile = () => {
             ? <img src={selectSpecies.fields["Illustration"][0].thumbnails.large.url}></img>
             : null
           }
-        </>
+        </div>
       )}
     </>
   );

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Airtable from "airtable";
-import Container from "react-bootstrap/Container";
 import "./SearchResults.css";
 
 import Trees from "./Trees";
