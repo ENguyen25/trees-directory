@@ -1,52 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Trees.css';
 
 const Trees = ({ treeData }) => {
 
-  const style = {
-    searchCard: {
-      background: 'green',
-    },
-    header: {
-      color: 'darkgreen'
-    },
-    subtitle: {
-      color: 'white'
-    },
-    tagLabel: {
-      color: 'brown'
-    },
-    leftCard: {
-      float: 'left'
-    },
-    rightCard: {
-      float: 'right'
-    },
-    imageSize: {
-      width: '10%',
-      height: '10%'
-    }
-  }
-
   return (
-    <div style={style.searchCard}>
-      <div style={style.leftColumn}>
+    <div className='searchCard'>
+      <div className='leftCard'>
         <Link to={`/species/${treeData.id}`}>
-          <h4 style={style.header}>{treeData.fields["Botanical Name"]}</h4>
+          <h4 className='cardHeader'>{treeData.fields["Botanical Name"]}</h4>
         </Link>
-          <p style={style.subtitle}>{treeData.fields["Family Botanical Name"]}</p>
-          <p style={style.subtitle}>{treeData.fields["Other Known Names"]}</p>
-          <p style={style.subtitle}>{treeData.fields["Plant or Tree"]}</p>
+          <p className='subtitle'><b>Family Botanical Name: </b>{treeData.fields["Family Botanical Name"]}</p>
+          <p className='subtitle'><b>Common Names: </b>{treeData.fields["Other Known Names"]}</p>
+          <p className='subtitle'><b>Plant or Tree: </b>{treeData.fields["Plant or Tree"]}</p>
           {treeData.fields["Products and Uses"] !== undefined
             ? treeData.fields["Products and Uses"].map((product) => (
-            <p style={style.tagLabel}>{product}</p>
+            <p className='tagLabel'>{product}</p>
           ))
             : null
           }
       </div>
-      <div style={style.rightColumn}>
+      <div className='rightCard'>
         {treeData.fields["Image of tree"] !== undefined
-          ? <img style={style.imageSize} src={treeData.fields["Image of tree"]} alt={treeData.fields["Botanical Name"]} />
+          ? <img className='imageSize' src={treeData.fields["Image of tree"]} alt={treeData.fields["Botanical Name"]} />
           : null
         }
       </div>

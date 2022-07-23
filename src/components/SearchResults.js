@@ -96,7 +96,7 @@ function SearchResults() {
   };
 
   return (
-    <>
+    <div className="searchContainer">
       <div className="rightColumn">
         <input
           type="text"
@@ -127,27 +127,18 @@ function SearchResults() {
       <div className="leftColumn">
         {searchInput.length > 1 || filter === true
           ? filteredResults.map((tree) => {
-              return (
-                <div className="searchCard">
-                  <Trees key={tree.getId()} treeData={tree} />
-                  <br/>
-                </div>
-              );
+              return <Trees key={tree.getId()} treeData={tree} />
             })
           : trees.slice(0, next).map((tree) => {
-              return (
-                <div className="searchCard">
-                  <Trees key={tree.getId()} treeData={tree} />
-                  <br/>
-                </div>
-              );
-            })}
+              return <Trees key={tree.getId()} treeData={tree} />
+            })
+        }
 
         {next < trees.length && (
-          <button onClick={loadMoreTrees}>Load more</button>
+          <button className="tagButton" onClick={loadMoreTrees}>Load more</button>
         )}
       </div>
-    </>
+    </div>
   );
 }
 

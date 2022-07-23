@@ -1,21 +1,23 @@
+.searchContainer {
+  margin: 5%;
+}
+
 .leftColumn {
-  width: 70vw;
+  width: 55vw;
 }
 
 .rightColumn {
-  width: 30vw;
-  padding: 30px;
+  width: 25vw;
   float: right;
-  background-color: lightgray;
 }
 
 .searchCard {
   display: block;
+  margin-bottom: 5%;
 }
 
 .searchBar {
   margin-bottom: 20px;
-  margin-right: 10px;
   padding: 5px 10px;
   width: 100%;
   border-radius: 5px;
@@ -26,13 +28,14 @@
   margin-bottom: 10px;
   margin-right: 10px;
   padding: 5px 10px;
-  background: linear-gradient(rgba(60, 150, 107, 0.8), rgba(60, 150, 107, 0.6));
+  background: rgb(65, 76, 68);
+  color: white;
   border: none;
   border-radius: 10px;
 }
 
 .tagButton:hover {
-  background: linear-gradient(rgba(60, 150, 107, 0.6), rgba(60, 150, 107, 0.8));
+  background: #319fc2;
 }
 
 .loadButton {

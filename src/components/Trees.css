@@ -1,0 +1,37 @@
+.searchCard {
+  background: white;
+  padding: 2%;
+  border-radius: 10px;
+}
+
+.cardHeader {
+  color: #1a4314;
+  width: fit-content;
+}
+
+.cardHeader:hover {
+  color: #319FC2;
+}
+
+.subtitle {
+  color: rgb(79, 79, 79);
+}
+
+.tagLabel {
+  background-color: #608a45;
+  color: white;
+  width: fit-content;
+  padding: 5px 10px;
+  display: inline-block;
+  margin-right: 10px;
+  border-radius: 10px;
+}
+
+.imageSize {
+  width: 10%;
+  height: 10%;
+}
+
+a {
+  text-decoration: none;
+}
