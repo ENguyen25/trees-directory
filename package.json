@@ -1,7 +1,6 @@
 {
   "name": "trees-directory",
   "version": "0.1.0",
-  "homepage": "https://enguyen25.github.io/trees-directory",
   "private": true,
   "dependencies": {
     "@mui/material": "^5.9.0",
