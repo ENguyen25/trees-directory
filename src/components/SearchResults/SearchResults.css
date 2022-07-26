@@ -17,6 +17,14 @@
   margin-bottom: 5%;
 }
 
+.mainSearchBar {
+  margin-top: 2%;
+  border: solid black 2px;
+  padding: 5px 10px;
+  width: 20vw;
+  font-size: large;
+}
+
 .searchBar {
   margin-bottom: 20px;
   padding: 5px 10px;

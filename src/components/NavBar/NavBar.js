@@ -5,7 +5,9 @@ import logo from "../../assets/images/cv-logo.png";
 const NavBar = () => {
   return (
     <div className="navigation">
-      <img className="logo" src={logo} alt="tree logo" />
+      <a href="https://caminoverde.org">
+        <img className="logo" src={logo} alt="tree logo" />
+      </a>
       <div className="navLinks">
         <a href="https://caminoverde.org/vision">
           <p className="navItem">VISION</p>
@@ -14,7 +16,7 @@ const NavBar = () => {
           <a href="https://caminoverde.org/mission">
             <p className="navItem">MISSION</p>
           </a>
-          <div class="dropdown-content animated animatedFadeInUp fadeInUp">
+          <div className="dropdown-content animated animatedFadeInUp fadeInUp">
             <a href="https://caminoverde.org/team">TEAM</a>
             <a href="https://caminoverde.org/where">WHERE WE WORK</a>
           </div>
@@ -23,7 +25,7 @@ const NavBar = () => {
           <a href="https://caminoverde.org/programs">
             <p className="navItem">PROGRAMS</p>
           </a>
-          <div class="dropdown-content animated animatedFadeInUp fadeInUp">
+          <div className="dropdown-content animated animatedFadeInUp fadeInUp">
             <a href="https://caminoverde.org/centers">CENTERS</a>
             <a href="https://caminoverde.org/consultations">CONSULTATIONS</a>
           </div>
@@ -32,7 +34,7 @@ const NavBar = () => {
           <a href="https://caminoverde.org/connect1">
             <p className="navItem">CONNECT</p>
           </a>
-          <div class="dropdown-content animated animatedFadeInUp fadeInUp">
+          <div className="dropdown-content animated animatedFadeInUp fadeInUp">
             <a href="https://caminoverde.org/contact">CONTACT</a>
             <a href="https://caminoverde.org/volunteer">VOLUNTEER</a>
             <a href="https://caminoverde.org/resources">RESOURCES</a>

@@ -13,7 +13,6 @@
   font-family: "Source Sans Pro", "sans-serif";
   font-weight: 200;
   color: white;
-  animation: fadein 2s;
 }
 
 .heroTitle {
@@ -24,14 +23,4 @@
 .heroSubtitle {
   font-size: 50px;
   margin: 0;
-}
-
-
-@keyframes fadein {
-  from {
-      opacity:0;
-  }
-  to {
-      opacity:1;
-  }
 }
