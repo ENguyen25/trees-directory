@@ -11,13 +11,12 @@ const base = new Airtable({ apiKey: "keycVUqNgXbPQmTBb" }).base(
   "apppAm9jBXoifxazs"
 );
 
-const treesPerRow = 20;
+const treesPerRow = 18;
 
 function SearchResults() {
   const [trees, setTrees] = useState([]);
   const [next, setNext] = useState(treesPerRow);
   const [searchInput, setSearchInput] = useState("");
-  const [formInput, setFormInput] = useState("");
   const [filteredResults, setFilteredResults] = useState([]);
   const [filter, setFilter] = useState(false);
   const myRef = useRef(null);
@@ -81,7 +80,8 @@ function SearchResults() {
 
   const executeScroll = (e) => {
     e.preventDefault();
-    myRef.current.scrollIntoView()
+    e.target.reset();
+    myRef.current.scrollIntoView();
   };
 
   const plantOrTree = (value) => {
@@ -118,10 +118,11 @@ function SearchResults() {
               className="mainSearchBar"
               onChange={(e) => searchItems(e.target.value)}
             />
-            <button type="submit"></button>
+            <button className="submitBtn" type="submit"></button>
           </form>
         </div>
       </div>
+      <ImageGallery />
       <div className="searchContainer">
         <div className="rightColumn">
           <input
