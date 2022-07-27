@@ -1,3 +1,20 @@
 .profilePage {
     background-color: white;
+    height: 100%;
+    padding: 5%;
+}
+
+.pageHeader {
+    margin: 0;
+}
+
+.indent {
+    width: 20vw;
+    display: inline-block;
+}
+
+.productNames {
+    display: inline-block;
+    text-decoration: underline;
+    margin-right: 10px;
 }
