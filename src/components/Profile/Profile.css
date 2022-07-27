@@ -1,7 +1,17 @@
 .profilePage {
-    background-color: white;
+    background-color: #EDEDED;
     height: 100%;
-    padding: 5%;
+    padding: 2%;
+}
+
+.profileContainer {
+    display: flex;
+    background-color: white;
+    padding: 3%;
+}
+
+.profile {
+    padding-left: 3%;
 }
 
 .pageHeader {
@@ -9,12 +19,22 @@
 }
 
 .indent {
-    width: 20vw;
+    width: 18vw;
     display: inline-block;
+}
+
+.productContainer {
+    display: flex;
 }
 
 .productNames {
     display: inline-block;
     text-decoration: underline;
     margin-right: 10px;
+    margin-bottom: 0;
+}
+
+.imageContainer {
+    float: left;
+    width: 40vw;
 }
