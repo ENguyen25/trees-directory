@@ -8,7 +8,7 @@ const TabGallery = ({ images }) => {
 
   return (
     <div className="imageContainer">
-      <div>
+      <div className="enlargedImageContainer">
         <img className="enlargedImage" src={imageSrc} alt="plant image" />
       </div>
       {fetchedImages.map((image) => (

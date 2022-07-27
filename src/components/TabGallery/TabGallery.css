@@ -1,3 +1,10 @@
+.enlargedImageContainer {
+    height: 80vh;
+    background-color: #BBBBBB;
+    display: flex;
+    align-items: center;
+}
+
 .enlargedImage {
     width: 40vw;
 }
