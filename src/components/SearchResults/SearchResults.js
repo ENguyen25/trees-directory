@@ -84,6 +84,7 @@ function SearchResults() {
       });
       console.log(filteredData);
       setFilteredResults(filteredData);
+      setNext(treesPerRow)
     }
   };
 
@@ -100,6 +101,7 @@ function SearchResults() {
 
     setFilter(true);
     setFilteredResults(filteredData);
+    setNext(treesPerRow)
   };
 
   const productsAndUses = (value) => {
@@ -111,6 +113,7 @@ function SearchResults() {
 
     setFilter(true);
     setFilteredResults(filteredData);
+    setNext(treesPerRow)
   };
 
   return (
