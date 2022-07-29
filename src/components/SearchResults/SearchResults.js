@@ -54,6 +54,7 @@ function SearchResults() {
       .select({ view: "Grid view", maxRecords: 665 })
       .eachPage((records, fetchNextPage) => {
         setTrees((current) => [...current, ...records]);
+        setFilteredResults((current) => [...current, ...records]);
         fetchNextPage();
       });
   }, []);
@@ -200,7 +201,7 @@ function SearchResults() {
                   return <Trees key={tree.getId()} treeData={tree} />;
                 })}
           </div>
-            {(next < trees.length || next < filteredResults.length) ? (
+            {(next < filteredResults.length) ? (
               <div className="loadMore">
                 <button className="loadButton" onClick={loadMoreTrees}>
                   Load more
