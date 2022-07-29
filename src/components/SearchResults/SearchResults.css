@@ -1,17 +1,17 @@
 .searchContainer {
-  padding: 5%;
+  padding: 5% 3% 5% 3%;
   background-color: #EDEDED;
 }
 
 .leftColumn {
-  width: 73vw;
   display: flex;
   flex-wrap: wrap;
 }
 
 .rightColumn {
-  width: 15vw;
+  width: 18vw;
   float: right;
+  margin-left: 0;
 }
 
 .mainSearchBar {
@@ -25,7 +25,7 @@
 .searchBar {
   margin-bottom: 20px;
   padding: 5px 10px;
-  width: 100%;
+  width: -webkit-fill-available;
   border-radius: 5px;
   border: none;
 }
@@ -34,23 +34,80 @@
   display: none;
 }
 
-.tagButton {
-  margin-bottom: 10px;
-  margin-right: 10px;
-  padding: 5px 10px;
-  background: rgb(65, 76, 68);
-  color: white;
-  border: none;
-  border-radius: 10px;
+.accordion__button {
+  width: auto;
+  color: blue;
 }
 
-.tagButton:hover {
-  background: #319fc2;
-  cursor: pointer;
+.checkbox {
+  display: block;
 }
 
 .loadButton {
   margin: 20px;
+}
+
+.accordion {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+}
+
+.accordion__item + .accordion__item {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.accordion__button {
+  background-color: #2C5E1A;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: auto;
+  text-align: left;
+  border: none;
+}
+
+.accordion__button:hover {
+  background-color: #319fc2;
+}
+
+.accordion__button:before {
+  display: inline-block;
+  content: '';
+  height: 10px;
+  width: 10px;
+  margin-right: 12px;
+  border-bottom: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  transform: rotate(-45deg);
+}
+
+.accordion__button[aria-expanded='true']::before,
+.accordion__button[aria-selected='true']::before {
+  transform: rotate(45deg);
+}
+
+[hidden] {
+  display: none;
+}
+
+.accordion__panel {
+  padding: 20px;
+  animation: fadein 0.35s ease-in;
+  background-color: #B2D2A4;
+}
+
+/* -------------------------------------------------- */
+/* ---------------- Animation part ------------------ */
+/* -------------------------------------------------- */
+
+@keyframes fadein {
+  0% {
+      opacity: 0;
+  }
+
+  100% {
+      opacity: 1;
+  }
 }
 
 @media screen and (max-width: 1024px) {

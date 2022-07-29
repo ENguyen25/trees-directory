@@ -12,10 +12,13 @@
 
 .profile {
     padding-left: 3%;
+    height: 100%;
 }
 
 .pageHeader {
     margin: 0;
+    font-style: italic;
+    color: #2C5E1A;
 }
 
 .indent {

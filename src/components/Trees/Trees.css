@@ -9,11 +9,12 @@
 }
 
 .cardHeader {
-  color: #1a4314;
+  color: #2C5E1A;
   width: fit-content;
   margin-top: 0;
   margin-bottom: 0;
   font-size: 25px;
+  font-style: italic;
 }
 
 .cardHeader:hover, .tagLabel {

@@ -117,22 +117,24 @@ const Profile = () => {
               </p>
               {selectSpecies.fields["Plant or Tree"]}
             </div>
-            <div className="productContainer">
-              <p className="indent">
-                <b>Products and Uses</b>
-              </p>
-              <div className="productList">
-                {selectSpecies.fields["Products and Uses"] !== undefined
-                  ? selectSpecies.fields["Products and Uses"].map((product) => (
-                      <p className="productNames">{product}</p>
-                    ))
-                  : null}
+            {selectSpecies.fields["Products and Uses"] !== undefined ? (
+              <div className="productContainer">
+                <p className="indent">
+                  <b>Products and Uses</b>
+                </p>
+                {selectSpecies.fields["Products and Uses"].map((product) => (
+                  <p className="productNames">{product}</p>
+                ))}
               </div>
-            </div>
-            <h4>Botanical Description</h4>
-            <p className="description">
-              {selectSpecies.fields["Tree Profile"]}
-            </p>
+            ) : null}
+            {selectSpecies.fields["Tree Profile"] !== undefined ? (
+              <>
+                <h4>Botanical Description</h4>
+                <p className="description">
+                  {selectSpecies.fields["Tree Profile"]}
+                </p>
+              </>
+            ) : null}
           </div>
         )}
       </div>

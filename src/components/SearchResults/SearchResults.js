@@ -14,7 +14,6 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from "react-accessible-accordion";
-import "react-accessible-accordion/dist/fancy-example.css";
 
 const base = new Airtable({ apiKey: "keycVUqNgXbPQmTBb" }).base(
   "apppAm9jBXoifxazs"
@@ -147,22 +146,26 @@ function SearchResults() {
                 <AccordionItemButton>Species Type</AccordionItemButton>
               </AccordionItemHeading>
               <AccordionItemPanel>
-                <input
-                  type="checkbox"
-                  id="species-type"
-                  name="species-type"
-                  value="plant"
-                  onChange={() => plantOrTree("Plant")}
-                />
-                <label for="species-type"> Plant</label>
-                <input
-                  type="checkbox"
-                  id="species-type"
-                  name="species-type"
-                  value="tree"
-                  onChange={() => plantOrTree("Tree")}
-                />
-                <label for="species-type"> Tree</label>
+                <div className="checkbox">
+                  <input
+                    type="checkbox"
+                    id="species-type"
+                    name="species-type"
+                    value="plant"
+                    onChange={() => plantOrTree("Plant")}
+                  />
+                  <label for="species-type"> Plant</label>
+                </div>
+                <div className="checkbox">
+                  <input
+                    type="checkbox"
+                    id="species-type"
+                    name="species-type"
+                    value="tree"
+                    onChange={() => plantOrTree("Tree")}
+                  />
+                  <label for="species-type"> Tree</label>
+                </div>
               </AccordionItemPanel>
             </AccordionItem>
             <AccordionItem>
@@ -171,15 +174,16 @@ function SearchResults() {
               </AccordionItemHeading>
               <AccordionItemPanel>
                 {productsAndUsesArray.map((products) => (
-                  <>
+                  <div className="checkbox">
                     <input
                       type="checkbox"
                       id={products}
                       name={products}
                       value="plant"
+                      onChange={() => productsAndUses(products)}
                     />
                     <label for={products}> {products}</label>
-                  </>
+                  </div>
                 ))}
               </AccordionItemPanel>
             </AccordionItem>
