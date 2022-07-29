@@ -3,9 +3,13 @@
   background-color: #EDEDED;
 }
 
-.leftColumn {
+.searchResults {
   display: flex;
   flex-wrap: wrap;
+}
+
+.leftColumn {
+  width: 80%;
 }
 
 .rightColumn {
@@ -34,17 +38,27 @@
   display: none;
 }
 
-.accordion__button {
-  width: auto;
-  color: blue;
-}
-
 .checkbox {
   display: block;
 }
 
+.loadMore {
+  text-align: center;
+  width: 100%;
+}
+
 .loadButton {
-  margin: 20px;
+  background-color: #2C5E1A;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 50px;
+  color: white;
+  font-size: x-large;
+}
+
+.loadButton:hover {
+  background-color: #319fc2;
+  cursor: pointer;
 }
 
 .accordion {

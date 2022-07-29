@@ -1,11 +1,14 @@
 .searchCard {
   background: white;
-  padding: 2%;
   border-radius: 10px;
-  width: 19vw;
+  width: 22vw;
   margin-right: 3%;
   margin-bottom: 3%;
   display: block;
+}
+
+.cardContent {
+  padding: 5% 8%;
 }
 
 .cardHeader {
@@ -23,6 +26,7 @@
 
 .subtitle, .productsUses {
   color: rgb(79, 79, 79);
+  margin: 0 0 2px 0;
 }
 
 .productsUses {
@@ -36,8 +40,10 @@
 }
 
 .imageSize {
-  width: 10%;
-  height: 10%;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
 }
 
 a {

@@ -191,19 +191,22 @@ function SearchResults() {
         </div>
 
         <div className="leftColumn">
-          {searchInput.length > 1 || filter === true
-            ? filteredResults.map((tree) => {
-                return <Trees key={tree.getId()} treeData={tree} />;
-              })
-            : trees.slice(0, next).map((tree) => {
-                return <Trees key={tree.getId()} treeData={tree} />;
-              })}
-
-          {next < trees.length && (
-            <button className="tagButton" onClick={loadMoreTrees}>
-              Load more
-            </button>
-          )}
+          <div className="searchResults">
+            {searchInput.length > 1 || filter === true
+              ? filteredResults.slice(0, next).map((tree) => {
+                  return <Trees key={tree.getId()} treeData={tree} />;
+                })
+              : trees.slice(0, next).map((tree) => {
+                  return <Trees key={tree.getId()} treeData={tree} />;
+                })}
+          </div>
+            {(next < trees.length || next < filteredResults.length) ? (
+              <div className="loadMore">
+                <button className="loadButton" onClick={loadMoreTrees}>
+                  Load more
+                </button>
+              </div>
+            ) : null}
         </div>
       </div>
     </>
