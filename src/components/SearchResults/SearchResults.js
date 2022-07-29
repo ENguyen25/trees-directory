@@ -7,6 +7,15 @@ import NavBar from "../NavBar/NavBar";
 import ImageGallery from "../ImageGallery/ImageGallery";
 import Trees from "../Trees/Trees";
 
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel,
+} from "react-accessible-accordion";
+import "react-accessible-accordion/dist/fancy-example.css";
+
 const base = new Airtable({ apiKey: "keycVUqNgXbPQmTBb" }).base(
   "apppAm9jBXoifxazs"
 );
@@ -132,23 +141,49 @@ function SearchResults() {
             onChange={(e) => searchItems(e.target.value)}
           />
           <br />
-          <h2 ref={myRef}>Species Type</h2>
-          <button className="tagButton" onClick={() => plantOrTree("Plant")}>
-            Plant
-          </button>
-          <button className="tagButton" onClick={() => plantOrTree("Tree")}>
-            Tree
-          </button>
-          <br />
-          <h2>Products and Uses</h2>
-          {productsAndUsesArray.map((products) => (
-            <button
-              className="tagButton"
-              onClick={() => productsAndUses(products)}
-            >
-              {products}
-            </button>
-          ))}
+          <Accordion>
+            <AccordionItem>
+              <AccordionItemHeading>
+                <AccordionItemButton>Species Type</AccordionItemButton>
+              </AccordionItemHeading>
+              <AccordionItemPanel>
+                <input
+                  type="checkbox"
+                  id="species-type"
+                  name="species-type"
+                  value="plant"
+                  onChange={() => plantOrTree("Plant")}
+                />
+                <label for="species-type"> Plant</label>
+                <input
+                  type="checkbox"
+                  id="species-type"
+                  name="species-type"
+                  value="tree"
+                  onChange={() => plantOrTree("Tree")}
+                />
+                <label for="species-type"> Tree</label>
+              </AccordionItemPanel>
+            </AccordionItem>
+            <AccordionItem>
+              <AccordionItemHeading>
+                <AccordionItemButton>Products and Uses</AccordionItemButton>
+              </AccordionItemHeading>
+              <AccordionItemPanel>
+                {productsAndUsesArray.map((products) => (
+                  <>
+                    <input
+                      type="checkbox"
+                      id={products}
+                      name={products}
+                      value="plant"
+                    />
+                    <label for={products}> {products}</label>
+                  </>
+                ))}
+              </AccordionItemPanel>
+            </AccordionItem>
+          </Accordion>
         </div>
 
         <div className="leftColumn">
