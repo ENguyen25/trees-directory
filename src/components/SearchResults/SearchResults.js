@@ -21,33 +21,34 @@ const base = new Airtable({ apiKey: "keycVUqNgXbPQmTBb" }).base(
 
 const treesPerRow = 18;
 
+const productsAndUsesArray = [
+  "Alcoholic Maceration",
+  "Aromatic",
+  "Craft Material",
+  "Cultural Importance",
+  "Edible",
+  "Essential Oil",
+  "Fruit",
+  "Living Fence",
+  "Medicine",
+  "Nut",
+  "Oil",
+  "Ornamental",
+  "Other",
+  "Pollinator Attractor",
+  "Resin",
+  "Soil Improvement",
+  "Timber",
+];
+
 function SearchResults() {
   const [trees, setTrees] = useState([]);
   const [next, setNext] = useState(treesPerRow);
   const [searchInput, setSearchInput] = useState("");
+  const [checkedProducts, setCheckedProducts] = useState([]);
   const [filteredResults, setFilteredResults] = useState([]);
   const [filter, setFilter] = useState(false);
   const myRef = useRef(null);
-
-  const productsAndUsesArray = [
-    "Alcoholic Maceration",
-    "Aromatic",
-    "Craft Material",
-    "Cultural Importance",
-    "Edible",
-    "Essential Oil",
-    "Fruit",
-    "Living Fence",
-    "Medicine",
-    "Nut",
-    "Oil",
-    "Ornamental",
-    "Other",
-    "Pollinator Attractor",
-    "Resin",
-    "Soil Improvement",
-    "Timber",
-  ];
 
   useEffect(() => {
     base("Our Trees")
@@ -58,6 +59,28 @@ function SearchResults() {
         fetchNextPage();
       });
   }, []);
+
+  const handleChange = (e) => {
+    if (e.target.checked) {
+      setCheckedProducts([...checkedProducts, e.target.value]);
+    } else {
+      setCheckedProducts(checkedProducts.filter((id) => id !== e.target.value));
+    }
+  };
+
+  useEffect(() => {
+    if (checkedProducts.length === 0) {
+      setFilteredResults(trees);
+    } else {
+      setFilteredResults(
+        filteredResults.filter((result) => {
+          if (result.fields["Products and Uses"] !== undefined) {
+            return checkedProducts.some(product => result.fields["Products and Uses"].toString().includes(product));
+          }
+        })
+      );
+    }
+  }, [checkedProducts]);
 
   const loadMoreTrees = () => {
     setNext(next + treesPerRow);
@@ -82,9 +105,8 @@ function SearchResults() {
 
         return botanicalName || familyName || commonName;
       });
-      console.log(filteredData);
       setFilteredResults(filteredData);
-      setNext(treesPerRow)
+      setNext(treesPerRow);
     }
   };
 
@@ -94,27 +116,9 @@ function SearchResults() {
     myRef.current.scrollIntoView();
   };
 
-  const plantOrTree = (value) => {
-    const filteredData = trees.filter((tree) => {
-      return tree.fields["Plant or Tree"].toString().includes(value);
-    });
-
-    setFilter(true);
-    setFilteredResults(filteredData);
-    setNext(treesPerRow)
-  };
-
-  const productsAndUses = (value) => {
-    const filteredData = trees.filter((tree) => {
-      if (tree.fields["Products and Uses"] !== undefined) {
-        return tree.fields["Products and Uses"].toString().includes(value);
-      }
-    });
-
-    setFilter(true);
-    setFilteredResults(filteredData);
-    setNext(treesPerRow)
-  };
+  // if (tree.fields["Products and Uses"] !== undefined) {
+  //   return tree.fields["Products and Uses"].toString().includes(uses);
+  // }
 
   return (
     <>
@@ -156,7 +160,6 @@ function SearchResults() {
                     id="species-type"
                     name="species-type"
                     value="plant"
-                    onChange={() => plantOrTree("Plant")}
                   />
                   <label for="species-type"> Plant</label>
                 </div>
@@ -166,7 +169,6 @@ function SearchResults() {
                     id="species-type"
                     name="species-type"
                     value="tree"
-                    onChange={() => plantOrTree("Tree")}
                   />
                   <label for="species-type"> Tree</label>
                 </div>
@@ -183,8 +185,8 @@ function SearchResults() {
                       type="checkbox"
                       id={products}
                       name={products}
-                      value="plant"
-                      onChange={() => productsAndUses(products)}
+                      value={products}
+                      onChange={handleChange}
                     />
                     <label for={products}> {products}</label>
                   </div>
@@ -194,23 +196,23 @@ function SearchResults() {
           </Accordion>
         </div>
 
-        <div className="leftColumn">
+        <div className="leftColumn" ref={myRef}>
           <div className="searchResults">
             {searchInput.length > 1 || filter === true
               ? filteredResults.slice(0, next).map((tree) => {
                   return <Trees key={tree.getId()} treeData={tree} />;
                 })
-              : trees.slice(0, next).map((tree) => {
+              : filteredResults.slice(0, next).map((tree) => {
                   return <Trees key={tree.getId()} treeData={tree} />;
                 })}
           </div>
-            {(next < filteredResults.length) ? (
-              <div className="loadMore">
-                <button className="loadButton" onClick={loadMoreTrees}>
-                  Load more
-                </button>
-              </div>
-            ) : null}
+          {next < filteredResults.length ? (
+            <div className="loadMore">
+              <button className="loadButton" onClick={loadMoreTrees}>
+                Load more
+              </button>
+            </div>
+          ) : null}
         </div>
       </div>
     </>
