@@ -4,6 +4,13 @@
     padding: 2%;
 }
 
+.profileHeader {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../../assets/images/amazon.jpg") no-repeat;
+    background-size: cover;
+    color: white;
+}
+
 .profileContainer {
     display: flex;
     background-color: white;
