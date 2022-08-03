@@ -12,7 +12,7 @@ import {
   AccordionItem,
   AccordionItemHeading,
   AccordionItemButton,
-  AccordionItemPanel,
+  AccordionItemPanel
 } from "react-accessible-accordion";
 
 const base = new Airtable({ apiKey: "keycVUqNgXbPQmTBb" }).base(
@@ -38,7 +38,7 @@ const productsAndUsesArray = [
   "Pollinator Attractor",
   "Resin",
   "Soil Improvement",
-  "Timber",
+  "Timber"
 ];
 
 function SearchResults() {
@@ -60,6 +60,50 @@ function SearchResults() {
       });
   }, []);
 
+  useEffect(() => {
+    if (!filter) {
+      setFilteredResults(trees);
+    }
+  }, [filter]);
+
+  useEffect(() => {
+    if (checkedProducts.length === 0) {
+      doSearch();
+      return;
+    }
+    filterItems();
+  }, [checkedProducts]);
+
+  useEffect(() => {
+    doSearch();
+  }, [searchInput]);
+
+  useEffect(() => {
+    doFilter();
+  }, [checkedProducts, searchInput]);
+
+  const doFilter = () => {
+    if (filter && checkedProducts.length === 0 && searchInput.length === 0) {
+      setFilter(false);
+      return;
+    }
+
+    if (!filter && checkedProducts.length !== 0 && searchInput.length !== 0) {
+      setFilter(true);
+    }
+  };
+
+  const filterItems = () => {
+    const filtered = filteredResults.filter((result) => {
+      if (result.fields["Products and Uses"] === undefined) {
+        return false;
+      }
+
+      return checkedProducts.every((filter) => result.fields["Products and Uses"].includes(filter))
+    });
+    setFilteredResults(filtered);
+  };
+
   const handleChange = (e) => {
     if (e.target.checked) {
       setCheckedProducts([...checkedProducts, e.target.value]);
@@ -68,46 +112,28 @@ function SearchResults() {
     }
   };
 
-  useEffect(() => {
-    if (checkedProducts.length === 0) {
-      setFilteredResults(trees);
-    } else {
-      setFilteredResults(
-        filteredResults.filter((result) => {
-          if (result.fields["Products and Uses"] !== undefined) {
-            return checkedProducts.some(product => result.fields["Products and Uses"].toString().includes(product));
-          }
-        })
-      );
-    }
-  }, [checkedProducts]);
-
   const loadMoreTrees = () => {
     setNext(next + treesPerRow);
   };
 
-  const searchItems = (searchValue) => {
-    setFilter(false);
-    setSearchInput(searchValue);
-    if (searchInput !== "") {
-      const filteredData = trees.filter((tree) => {
-        const botanicalName = tree.fields["Botanical Name"]
-          .toLowerCase()
-          .includes(searchInput.toLowerCase());
-        const familyName = tree.fields["Family Botanical Name"]
-          .toLowerCase()
-          .includes(searchInput.toLowerCase());
-        if (tree.fields["Other Known Names"] !== undefined) {
-          var commonName = tree.fields["Other Known Names"]
-            .toLowerCase()
-            .includes(searchInput.toLowerCase());
-        }
+  const doSearch = () => {
+    const searchTerm = searchInput.toLowerCase();
+    const findTree = (field) =>
+      field && field.toLowerCase().includes(searchTerm);
 
-        return botanicalName || familyName || commonName;
-      });
-      setFilteredResults(filteredData);
-      setNext(treesPerRow);
-    }
+    const filtered = trees.filter(
+      (tree) =>
+        findTree(tree.fields["Botanical Name"]) ||
+        findTree(tree.fields["Family Botanical Name"]) ||
+        findTree(tree.fields["Other Known Names"])
+    );
+
+    setFilteredResults(filtered);
+  };
+
+  const searchItems = (searchValue) => {
+    setSearchInput(searchValue);
+    setNext(treesPerRow);
   };
 
   const executeScroll = (e) => {
@@ -133,6 +159,7 @@ function SearchResults() {
               placeholder="Search"
               className="mainSearchBar"
               onChange={(e) => searchItems(e.target.value)}
+              value={searchInput}
             />
             <button className="submitBtn" type="submit"></button>
           </form>
@@ -145,6 +172,7 @@ function SearchResults() {
             type="text"
             placeholder="Search"
             className="searchBar"
+            value={searchInput}
             onChange={(e) => searchItems(e.target.value)}
           />
           <br />
@@ -161,7 +189,7 @@ function SearchResults() {
                     name="species-type"
                     value="plant"
                   />
-                  <label for="species-type"> Plant</label>
+                  <label htmlFor="species-type"> Plant</label>
                 </div>
                 <div className="checkbox">
                   <input
@@ -170,7 +198,7 @@ function SearchResults() {
                     name="species-type"
                     value="tree"
                   />
-                  <label for="species-type"> Tree</label>
+                  <label htmlFor="species-type"> Tree</label>
                 </div>
               </AccordionItemPanel>
             </AccordionItem>
@@ -180,7 +208,7 @@ function SearchResults() {
               </AccordionItemHeading>
               <AccordionItemPanel>
                 {productsAndUsesArray.map((products) => (
-                  <div className="checkbox">
+                  <div key={products} id={products} className="checkbox">
                     <input
                       type="checkbox"
                       id={products}
@@ -188,7 +216,7 @@ function SearchResults() {
                       value={products}
                       onChange={handleChange}
                     />
-                    <label for={products}> {products}</label>
+                    <label htmlFor={products}> {products}</label>
                   </div>
                 ))}
               </AccordionItemPanel>
@@ -198,13 +226,16 @@ function SearchResults() {
 
         <div className="leftColumn" ref={myRef}>
           <div className="searchResults">
-            {searchInput.length > 1 || filter === true
-              ? filteredResults.slice(0, next).map((tree) => {
-                  return <Trees key={tree.getId()} treeData={tree} />;
+            {/* {searchInput.length > 1 || filter === true
+              ? filteredResults.slice(0, next).map((tree, i) => {
+                  return <Trees key={`${i}-${tree.getId()}`} treeData={tree} />;
                 })
-              : filteredResults.slice(0, next).map((tree) => {
-                  return <Trees key={tree.getId()} treeData={tree} />;
-                })}
+              : filteredResults.slice(0, next).map((tree, i) => {
+                  return <Trees key={`${i}-${tree.getId()}`} treeData={tree} />;
+                })} */}
+            {filteredResults.slice(0, next).map((tree, i) => {
+              return <Trees key={`${i}-${tree.getId()}`} treeData={tree} />;
+            })}
           </div>
           {next < filteredResults.length ? (
             <div className="loadMore">
