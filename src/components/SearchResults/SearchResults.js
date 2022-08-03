@@ -33,7 +33,7 @@ const productsAndUsesArray = [
   "Medicine",
   "Nut",
   "Oil",
-  "Ornamental",
+  "Ornamental ",
   "Other",
   "Pollinator Attractor",
   "Resin",
@@ -94,7 +94,7 @@ function SearchResults() {
   };
 
   const filterItems = () => {
-    const filtered = filteredResults.filter((result) => {
+    const filtered = trees.filter((result) => {
       if (result.fields["Products and Uses"] === undefined) {
         return false;
       }
@@ -141,10 +141,6 @@ function SearchResults() {
     e.target.reset();
     myRef.current.scrollIntoView();
   };
-
-  // if (tree.fields["Products and Uses"] !== undefined) {
-  //   return tree.fields["Products and Uses"].toString().includes(uses);
-  // }
 
   return (
     <>
