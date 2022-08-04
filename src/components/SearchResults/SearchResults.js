@@ -121,15 +121,6 @@ function SearchResults() {
     }
   };
 
-  const handleTypeChange = (e) => {
-    if (e.target.checked) {
-      const filtered = filteredResults.filter((result) => result.fields["Plant or Tree"].toString().includes(e.target.value))
-      setFilteredResults(filtered)
-    } else {
-      filterItems();
-    }
-  }
-
   const loadMoreTrees = () => {
     setNext(next + treesPerRow);
   };
