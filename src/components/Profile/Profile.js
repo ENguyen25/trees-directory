@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import Airtable from "airtable";
 import TabGallery from "../TabGallery/TabGallery";
+import NavBar from "../NavBar/NavBar";
 import "./Profile.css";
 
 const base = new Airtable({ apiKey: "keycVUqNgXbPQmTBb" }).base(
@@ -91,6 +92,10 @@ const Profile = () => {
   }
 
   return (
+    <div className="profileBody">
+      <div className="profileHeader">
+        <NavBar />
+      </div>
     <div className="profilePage">
       <div className="profileContainer">
         {fetchedImages.length > 0 && <TabGallery images={fetchedImages} />}
@@ -138,6 +143,7 @@ const Profile = () => {
           </div>
         )}
       </div>
+    </div>
     </div>
   );
 };

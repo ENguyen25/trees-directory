@@ -46,6 +46,8 @@ function SearchResults() {
   const [next, setNext] = useState(treesPerRow);
   const [searchInput, setSearchInput] = useState("");
   const [checkedProducts, setCheckedProducts] = useState([]);
+  const [speciesType, setSpeciesType] = useState([]);
+  const [speciesUses, setSpeciesUses] = useState([]);
   const [filteredResults, setFilteredResults] = useState([]);
   const [filter, setFilter] = useState(false);
   const myRef = useRef(null);
@@ -94,13 +96,20 @@ function SearchResults() {
   };
 
   const filterItems = () => {
-    const filtered = trees.filter((result) => {
+    const filtered = filteredResults.filter((result) => {
       if (result.fields["Products and Uses"] === undefined) {
         return false;
       }
 
-      return checkedProducts.every((filter) => result.fields["Products and Uses"].includes(filter))
-    });
+      return checkedProducts.every((filter) => {
+        if (filter === "Plant" || filter === "Tree") {
+          return result.fields["Plant or Tree"].includes(filter)
+        } else {
+          return result.fields["Products and Uses"].includes(filter)
+        }
+      })
+    })
+    console.log(filtered)
     setFilteredResults(filtered);
   };
 
@@ -111,6 +120,15 @@ function SearchResults() {
       setCheckedProducts(checkedProducts.filter((id) => id !== e.target.value));
     }
   };
+
+  const handleTypeChange = (e) => {
+    if (e.target.checked) {
+      const filtered = filteredResults.filter((result) => result.fields["Plant or Tree"].toString().includes(e.target.value))
+      setFilteredResults(filtered)
+    } else {
+      filterItems();
+    }
+  }
 
   const loadMoreTrees = () => {
     setNext(next + treesPerRow);
@@ -183,7 +201,8 @@ function SearchResults() {
                     type="checkbox"
                     id="species-type"
                     name="species-type"
-                    value="plant"
+                    value="Plant"
+                    onChange={handleChange}
                   />
                   <label htmlFor="species-type"> Plant</label>
                 </div>
@@ -192,7 +211,8 @@ function SearchResults() {
                     type="checkbox"
                     id="species-type"
                     name="species-type"
-                    value="tree"
+                    value="Tree"
+                    onChange={handleChange}
                   />
                   <label htmlFor="species-type"> Tree</label>
                 </div>
@@ -222,13 +242,6 @@ function SearchResults() {
 
         <div className="leftColumn" ref={myRef}>
           <div className="searchResults">
-            {/* {searchInput.length > 1 || filter === true
-              ? filteredResults.slice(0, next).map((tree, i) => {
-                  return <Trees key={`${i}-${tree.getId()}`} treeData={tree} />;
-                })
-              : filteredResults.slice(0, next).map((tree, i) => {
-                  return <Trees key={`${i}-${tree.getId()}`} treeData={tree} />;
-                })} */}
             {filteredResults.slice(0, next).map((tree, i) => {
               return <Trees key={`${i}-${tree.getId()}`} treeData={tree} />;
             })}
