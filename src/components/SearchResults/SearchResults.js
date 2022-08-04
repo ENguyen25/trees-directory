@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import { FiSearch } from 'react-icons/fi';
 import Airtable from "airtable";
 import "../Hero/Hero.css";
 import "./SearchResults.css";
@@ -6,6 +7,7 @@ import "./SearchResults.css";
 import NavBar from "../NavBar/NavBar";
 import ImageGallery from "../ImageGallery/ImageGallery";
 import Trees from "../Trees/Trees";
+import search from "../../assets/images/magnifying-glass.png";
 
 import {
   Accordion,
@@ -96,7 +98,7 @@ function SearchResults() {
   };
 
   const filterItems = () => {
-    const filtered = filteredResults.filter((result) => {
+    const filtered = trees.filter((result) => {
       if (result.fields["Products and Uses"] === undefined) {
         return false;
       }
@@ -173,13 +175,16 @@ function SearchResults() {
       <ImageGallery />
       <div className="searchContainer">
         <div className="rightColumn">
-          <input
-            type="text"
-            placeholder="Search"
-            className="searchBar"
-            value={searchInput}
-            onChange={(e) => searchItems(e.target.value)}
-          />
+          <div className="inputIcons">
+            <img className="searchLogo" src={search} alt="search logo"></img>
+            <input
+              type="text"
+              placeholder="Search"
+              className="searchBar"
+              value={searchInput}
+              onChange={(e) => searchItems(e.target.value)}
+            />
+          </div>
           <br />
           <Accordion>
             <AccordionItem>

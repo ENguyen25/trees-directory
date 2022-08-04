@@ -1,6 +1,7 @@
 .searchContainer {
   padding: 5% 3% 5% 3%;
   background-color: #EDEDED;
+  font-family: 'Work Sans', sans-serif;
 }
 
 .searchResults {
@@ -27,11 +28,29 @@
 }
 
 .searchBar {
-  margin-bottom: 20px;
-  padding: 5px 10px;
-  width: -webkit-fill-available;
+  width: 50%;
   border-radius: 5px;
   border: none;
+  font-size: 20px;
+  outline: none;
+  padding-left: 10px;
+}
+
+.searchLogo {
+  width: 20px;
+  height: 20px;
+}
+
+.inputIcons {
+  display: inline-block;
+  background-color: white;
+  margin-bottom: 20px;
+  padding: 15px 10px;
+  border-radius: 10px;
+}
+
+.inputIcons:hover {
+  box-shadow: 1px 1px 5px 1px;
 }
 
 .submitBtn {
@@ -40,6 +59,7 @@
 
 .checkbox {
   display: block;
+  margin-bottom: 5px;
 }
 
 .loadMore {
@@ -105,9 +125,10 @@
 }
 
 .accordion__panel {
-  padding: 20px;
+  padding: 10px;
   animation: fadein 0.35s ease-in;
   background-color: #B2D2A4;
+  font-size: 18px;
 }
 
 /* -------------------------------------------------- */
