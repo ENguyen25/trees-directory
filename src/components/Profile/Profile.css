@@ -49,6 +49,22 @@
   width: 40vw;
 }
 
+.backBtn {
+  background-color: #2c5e1a;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  color: white;
+  font-size: medium;
+  margin-bottom: 2%;
+  width: 120px;
+}
+
+.backBtn:hover {
+  background-color: #319fc2;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 768px) {
   .profileHeader {
     height: 150px;

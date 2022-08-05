@@ -92,6 +92,11 @@ const Profile = () => {
       </div>
       <div className="profilePage">
         <div className="profileContainer">
+          <div className="backBtn">
+            <a href="/">
+              Back to Search
+            </a>
+          </div>
           <div className="topSection">
             {fetchedImages.length > 0 && <TabGallery images={fetchedImages} />}
             {selectSpecies !== null && (
