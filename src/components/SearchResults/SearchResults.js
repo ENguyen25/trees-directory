@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import { FiSearch } from 'react-icons/fi';
 import Airtable from "airtable";
 import "../Hero/Hero.css";
 import "./SearchResults.css";
@@ -6,6 +7,7 @@ import "./SearchResults.css";
 import NavBar from "../NavBar/NavBar";
 import ImageGallery from "../ImageGallery/ImageGallery";
 import Trees from "../Trees/Trees";
+import search from "../../assets/images/magnifying-glass.png";
 
 import {
   Accordion,
@@ -45,8 +47,9 @@ function SearchResults() {
   const [trees, setTrees] = useState([]);
   const [next, setNext] = useState(treesPerRow);
   const [searchInput, setSearchInput] = useState("");
-  const [checkedProducts, setCheckedProducts] = useState({type: [], product: []});
-  const [plantOrTree, setPlantOrTree] = useState([]);
+  const [checkedProducts, setCheckedProducts] = useState([]);
+  const [speciesType, setSpeciesType] = useState([]);
+  const [speciesUses, setSpeciesUses] = useState([]);
   const [filteredResults, setFilteredResults] = useState([]);
   const [filter, setFilter] = useState(false);
   const myRef = useRef(null);
@@ -100,32 +103,25 @@ function SearchResults() {
         return false;
       }
 
-      return checkedProducts.every((filter) => result.fields["Products and Uses"].includes(filter))
+      return checkedProducts.every((filter) => {
+        if (filter === "Plant" || filter === "Tree") {
+          return result.fields["Plant or Tree"].includes(filter)
+        } else {
+          return result.fields["Products and Uses"].includes(filter)
+        }
+      })
     })
     console.log(filtered)
     setFilteredResults(filtered);
   };
 
-  const handleChange = (e, value) => {
+  const handleChange = (e) => {
     if (e.target.checked) {
-      if (e.target.value === "plant" || e.target.value === "tree") {
-        setCheckedProducts({...checkedProducts, type: value})
-      } else {
-        setCheckedProducts({...checkedProducts, product: value})
-      }
+      setCheckedProducts([...checkedProducts, e.target.value]);
     } else {
       setCheckedProducts(checkedProducts.filter((id) => id !== e.target.value));
     }
   };
-
-  const filterCollected = () => {
-    const collectedFilters = {
-      type: [],
-      uses: []
-    }
-
-    
-  }
 
   const loadMoreTrees = () => {
     setNext(next + treesPerRow);
@@ -179,13 +175,16 @@ function SearchResults() {
       <ImageGallery />
       <div className="searchContainer">
         <div className="rightColumn">
-          <input
-            type="text"
-            placeholder="Search"
-            className="searchBar"
-            value={searchInput}
-            onChange={(e) => searchItems(e.target.value)}
-          />
+          <div className="inputIcons">
+            <img className="searchLogo" src={search} alt="search logo"></img>
+            <input
+              type="text"
+              placeholder="Search"
+              className="searchBar"
+              value={searchInput}
+              onChange={(e) => searchItems(e.target.value)}
+            />
+          </div>
           <br />
           <Accordion>
             <AccordionItem>
@@ -198,8 +197,8 @@ function SearchResults() {
                     type="checkbox"
                     id="species-type"
                     name="species-type"
-                    value="plant"
-                    onChange={() => handleChange("plant")}
+                    value="Plant"
+                    onChange={handleChange}
                   />
                   <label htmlFor="species-type"> Plant</label>
                 </div>
@@ -208,8 +207,8 @@ function SearchResults() {
                     type="checkbox"
                     id="species-type"
                     name="species-type"
-                    value="tree"
-                    onChange={() => handleChange("tree")}
+                    value="Tree"
+                    onChange={handleChange}
                   />
                   <label htmlFor="species-type"> Tree</label>
                 </div>
@@ -227,7 +226,7 @@ function SearchResults() {
                       id={products}
                       name={products}
                       value={products}
-                      onChange={() => handleChange(products)}
+                      onChange={handleChange}
                     />
                     <label htmlFor={products}> {products}</label>
                   </div>
