@@ -18,7 +18,7 @@
 }
 
 .topSection {
-    display: flex;
+  display: flex;
 }
 
 .profile {
@@ -33,9 +33,9 @@
 }
 
 .plantInfo {
-    display: grid;
-    grid-template-columns: 60% 50%;
-    grid-template-rows: repeat(4, auto);
+  display: grid;
+  grid-template-columns: 60% 50%;
+  grid-template-rows: repeat(4, auto);
 }
 
 .productNames {
@@ -49,26 +49,32 @@
   width: 40vw;
 }
 
-@media screen and (max-width: 1024px) {
-}
-
 @media screen and (max-width: 768px) {
+  .profileHeader {
+    height: 150px;
+  }
 }
 
 @media screen and (max-width: 600px) {
-    .topSection {
-        display: block;
-        margin-bottom: 15%;
-    }
-    .imageContainer {
-        float: none;
-        width: 100%;
-    }
-    .profileContainer {
-        padding: 8%;
-    }
-    .profile {
-        padding: 0;
-        margin-top: 5%;
-    }
+  .topSection {
+    display: block;
+    margin-bottom: 15%;
+  }
+  .imageContainer {
+    float: none;
+    width: 100%;
+  }
+  .profileContainer {
+    padding: 8%;
+  }
+  .profile {
+    padding: 0;
+    margin-top: 5%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .profileHeader {
+    height: 130px;
+  }
 }

@@ -34,7 +34,6 @@ const Profile = () => {
     const fetchImages = () => {
       if (selectSpecies.fields["Image of tree"] !== undefined) {
         selectSpecies.fields["Image of tree"].map((image) => {
-          console.log(JSON.stringify(image.thumbnails.large.url));
           setFetchedImages((current) => [
             ...current,
             image.thumbnails.large.url,
@@ -43,7 +42,6 @@ const Profile = () => {
       }
       if (selectSpecies.fields["Image of Flower"] !== undefined) {
         selectSpecies.fields["Image of Flower"].map((image) => {
-          console.log(JSON.stringify(image.thumbnails.large.url));
           setFetchedImages((current) => [
             ...current,
             image.thumbnails.large.url,
@@ -52,7 +50,6 @@ const Profile = () => {
       }
       if (selectSpecies.fields["Image of fruit"] !== undefined) {
         selectSpecies.fields["Image of fruit"].map((image) => {
-          console.log(JSON.stringify(image.thumbnails.large.url));
           setFetchedImages((current) => [
             ...current,
             image.thumbnails.large.url,
@@ -61,7 +58,6 @@ const Profile = () => {
       }
       if (selectSpecies.fields["Image of Seed"] !== undefined) {
         selectSpecies.fields["Image of Seed"].map((image) => {
-          console.log(JSON.stringify(image.thumbnails.large.url));
           setFetchedImages((current) => [
             ...current,
             image.thumbnails.large.url,
@@ -70,7 +66,6 @@ const Profile = () => {
       }
       if (selectSpecies.fields["Image of Leaf"] !== undefined) {
         selectSpecies.fields["Image of Leaf"].map((image) => {
-          console.log(JSON.stringify(image.thumbnails.large.url));
           setFetchedImages((current) => [
             ...current,
             image.thumbnails.large.url,
@@ -79,7 +74,6 @@ const Profile = () => {
       }
       if (selectSpecies.fields["Illustration"] !== undefined) {
         selectSpecies.fields["Illustration"].map((image) => {
-          console.log(JSON.stringify(image.thumbnails.large.url));
           setFetchedImages((current) => [
             ...current,
             image.thumbnails.large.url,
