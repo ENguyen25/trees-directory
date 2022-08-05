@@ -133,22 +133,22 @@ const Profile = () => {
                     </>
                   ) : null}
                 </div>
+                {selectSpecies !== null && (
+                  <>
+                    {selectSpecies.fields["Tree Profile"] !== undefined ? (
+                      <>
+                        <h4>Botanical Description</h4>
+                        <p className="description">
+                          {selectSpecies.fields["Tree Profile"]}
+                        </p>
+                      </>
+                    ) : null}
+                  </>
+                )}
               </div>
             )}
           </div>
           <div className="bottomSection">
-            {selectSpecies !== null && (
-              <>
-                {selectSpecies.fields["Tree Profile"] !== undefined ? (
-                  <>
-                    <h4>Botanical Description</h4>
-                    <p className="description">
-                      {selectSpecies.fields["Tree Profile"]}
-                    </p>
-                  </>
-                ) : null}
-              </>
-            )}
           </div>
         </div>
       </div>
