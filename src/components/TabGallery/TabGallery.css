@@ -16,3 +16,9 @@
     width: 30%;
     margin-top: 2%;
 }
+
+@media screen and (max-width: 600px) {
+    .enlargedImage {
+        width: 100%;
+    }
+}

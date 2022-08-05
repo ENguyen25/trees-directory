@@ -6,7 +6,7 @@
 }
 
 .logo {
-  width: 7vw;
+  width: 90px;
 }
 
 .navItem,
@@ -119,4 +119,27 @@ a {
   opacity: 0;
   animation-name: fadeInUp;
   -webkit-animation-name: fadeInUp;
+}
+
+@media screen and (max-width: 768px) {
+  .logo {
+    width: 70px;
+  }
+  .navigation {
+    padding-bottom: 0px;
+  }
+  .navLinks {
+    width: 70vw;
+    text-align: right;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  /* add navigation drawer */
+}
+
+@media screen and (max-width: 480px) {
+  .navItem, .donateBtn {
+    font-size: 10px;
+  }
 }

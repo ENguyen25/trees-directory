@@ -9,7 +9,6 @@
 
 .header {
   text-align: center;
-  padding: 5vh 0;
   font-family: "Source Sans Pro", "sans-serif";
   font-weight: 200;
   color: white;
@@ -23,4 +22,49 @@
 .heroSubtitle {
   font-size: 50px;
   margin: 0;
+}
+
+@media screen and (max-width: 1024px) {
+  .hero {
+    height: 450px;
+  }
+  .heroTitle {
+    font-size: 60px;
+  }
+  .heroSubtitle {
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    margin-top: 20px;
+  }
+  .heroTitle {
+    margin: 0 50px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .heroTitle {
+    font-size: 50px;
+  }
+  .heroSubtitle {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .heroTitle {
+    margin: 0 30px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .heroTitle {
+    font-size: 40px;
+  }
+  .heroSubtitle {
+    font-size: 25px;
+  }
 }

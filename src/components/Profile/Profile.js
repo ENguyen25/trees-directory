@@ -96,54 +96,68 @@ const Profile = () => {
       <div className="profileHeader">
         <NavBar />
       </div>
-    <div className="profilePage">
-      <div className="profileContainer">
-        {fetchedImages.length > 0 && <TabGallery images={fetchedImages} />}
-        {selectSpecies !== null && (
-          <div className="profile">
-            <h1 className="pageHeader">
-              {selectSpecies.fields["Botanical Name"]}
-            </h1>
-            <div className="plantNames">
-              <p className="indent">
-                <b>Family Botanical Name </b>
-              </p>
-              {selectSpecies.fields["Family Botanical Name"]}
-            </div>
-            <div className="plantNames">
-              <p className="indent">
-                <b>Common Names </b>
-              </p>
-              {selectSpecies.fields["Other Known Names"]}
-            </div>
-            <div className="plantNames">
-              <p className="indent">
-                <b>Plant or Tree </b>
-              </p>
-              {selectSpecies.fields["Plant or Tree"]}
-            </div>
-            {selectSpecies.fields["Products and Uses"] !== undefined ? (
-              <div className="productContainer">
-                <p className="indent">
-                  <b>Products and Uses</b>
-                </p>
-                {selectSpecies.fields["Products and Uses"].map((product) => (
-                  <p className="productNames">{product}</p>
-                ))}
+      <div className="profilePage">
+        <div className="profileContainer">
+          <div className="topSection">
+            {fetchedImages.length > 0 && <TabGallery images={fetchedImages} />}
+            {selectSpecies !== null && (
+              <div className="profile">
+                <h1 className="pageHeader">
+                  {selectSpecies.fields["Botanical Name"]}
+                </h1>
+                <div className="plantInfo">
+                  <p className="label1">
+                    <b>Family Botanical Name </b>
+                  </p>
+                  <p className="info1">
+                    {selectSpecies.fields["Family Botanical Name"]}
+                  </p>
+                  <p className="label2">
+                    <b>Common Names </b>
+                  </p>
+                  <p className="info2">
+                    {selectSpecies.fields["Other Known Names"]}
+                  </p>
+                  <p className="label3">
+                    <b>Plant or Tree </b>
+                  </p>
+                  <p className="info3">
+                    {selectSpecies.fields["Plant or Tree"]}
+                  </p>
+                  {selectSpecies.fields["Products and Uses"] !== undefined ? (
+                    <>
+                      <p className="label4">
+                        <b>Products and Uses</b>
+                      </p>
+                      <div className="info4">
+                        {selectSpecies.fields["Products and Uses"].map(
+                          (product) => (
+                            <p className="productNames">{product}</p>
+                          )
+                        )}
+                      </div>
+                    </>
+                  ) : null}
+                </div>
               </div>
-            ) : null}
-            {selectSpecies.fields["Tree Profile"] !== undefined ? (
-              <>
-                <h4>Botanical Description</h4>
-                <p className="description">
-                  {selectSpecies.fields["Tree Profile"]}
-                </p>
-              </>
-            ) : null}
+            )}
           </div>
-        )}
+          <div className="bottomSection">
+            {selectSpecies !== null && (
+              <>
+                {selectSpecies.fields["Tree Profile"] !== undefined ? (
+                  <>
+                    <h4>Botanical Description</h4>
+                    <p className="description">
+                      {selectSpecies.fields["Tree Profile"]}
+                    </p>
+                  </>
+                ) : null}
+              </>
+            )}
+          </div>
+        </div>
       </div>
-    </div>
     </div>
   );
 };

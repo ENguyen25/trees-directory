@@ -1,7 +1,7 @@
 .searchCard {
   background: white;
   border-radius: 10px;
-  width: 22vw;
+  width: 30%;
   margin-right: 3%;
   margin-bottom: 3%;
   display: block;
@@ -50,4 +50,27 @@
 
 a {
   text-decoration: none;
+}
+
+@media screen and (max-width: 1042px) {
+  .searchCard {
+    width: 45%
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .searchCard {
+    width: 48%;
+  }
+  .searchCard:nth-child(even) {
+    margin-right: 0px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .searchCard {
+    margin-right: 0;
+    margin-bottom: 8%;
+    width: 100%;
+  }
 }

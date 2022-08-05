@@ -1,51 +1,74 @@
 .profilePage {
-    background-color: #EDEDED;
-    height: 100%;
-    padding: 2%;
+  background-color: #ededed;
+  height: 100%;
+  padding: 2%;
 }
 
 .profileHeader {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url("../../assets/images/amazon.jpg") no-repeat;
-    background-size: cover;
-    color: white;
+  background-size: cover;
+  color: white;
 }
 
 .profileContainer {
+  background-color: white;
+  padding: 3%;
+  font-family: "Work Sans", sans-serif;
+}
+
+.topSection {
     display: flex;
-    background-color: white;
-    padding: 3%;
-    font-family: 'Work Sans', sans-serif;
 }
 
 .profile {
-    padding-left: 3%;
-    height: 100%;
+  padding-left: 3%;
+  height: 100%;
 }
 
 .pageHeader {
-    margin: 0;
-    font-style: italic;
-    color: #2C5E1A;
+  margin: 0;
+  font-style: italic;
+  color: #2c5e1a;
 }
 
-.indent {
-    width: 18vw;
-    display: inline-block;
-}
-
-.productContainer {
-    display: flex;
+.plantInfo {
+    display: grid;
+    grid-template-columns: 60% 50%;
+    grid-template-rows: repeat(4, auto);
 }
 
 .productNames {
-    display: inline-block;
-    text-decoration: underline;
-    margin-right: 10px;
-    margin-bottom: 0;
+  text-decoration: underline;
+  margin-right: 10px;
+  margin-bottom: 0;
 }
 
 .imageContainer {
-    float: left;
-    width: 40vw;
+  float: left;
+  width: 40vw;
+}
+
+@media screen and (max-width: 1024px) {
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 600px) {
+    .topSection {
+        display: block;
+        margin-bottom: 15%;
+    }
+    .imageContainer {
+        float: none;
+        width: 100%;
+    }
+    .profileContainer {
+        padding: 8%;
+    }
+    .profile {
+        padding: 0;
+        margin-top: 5%;
+    }
 }

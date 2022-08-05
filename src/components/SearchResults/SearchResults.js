@@ -32,7 +32,10 @@ const productsAndUsesArray = [
   "Essential Oil",
   "Fruit",
   "Living Fence",
-  "Medicine",
+  "Medicine"
+];
+
+const productsAndUsesArray2 = [
   "Nut",
   "Oil",
   "Ornamental ",
@@ -41,15 +44,13 @@ const productsAndUsesArray = [
   "Resin",
   "Soil Improvement",
   "Timber"
-];
+]
 
 function SearchResults() {
   const [trees, setTrees] = useState([]);
   const [next, setNext] = useState(treesPerRow);
   const [searchInput, setSearchInput] = useState("");
   const [checkedProducts, setCheckedProducts] = useState([]);
-  const [speciesType, setSpeciesType] = useState([]);
-  const [speciesUses, setSpeciesUses] = useState([]);
   const [filteredResults, setFilteredResults] = useState([]);
   const [filter, setFilter] = useState(false);
   const myRef = useRef(null);
@@ -192,7 +193,7 @@ function SearchResults() {
                 <AccordionItemButton>Species Type</AccordionItemButton>
               </AccordionItemHeading>
               <AccordionItemPanel>
-                <div className="checkbox">
+                <div className="checkbox species-type">
                   <input
                     type="checkbox"
                     id="species-type"
@@ -202,7 +203,7 @@ function SearchResults() {
                   />
                   <label htmlFor="species-type"> Plant</label>
                 </div>
-                <div className="checkbox">
+                <div className="checkbox species-type">
                   <input
                     type="checkbox"
                     id="species-type"
@@ -219,18 +220,34 @@ function SearchResults() {
                 <AccordionItemButton>Products and Uses</AccordionItemButton>
               </AccordionItemHeading>
               <AccordionItemPanel>
-                {productsAndUsesArray.map((products) => (
-                  <div key={products} id={products} className="checkbox">
-                    <input
-                      type="checkbox"
-                      id={products}
-                      name={products}
-                      value={products}
-                      onChange={handleChange}
-                    />
-                    <label htmlFor={products}> {products}</label>
-                  </div>
-                ))}
+                <div className="checkboxColumn">
+                  {productsAndUsesArray.map((products) => (
+                    <div key={products} id={products} className="checkbox">
+                      <input
+                        type="checkbox"
+                        id={products}
+                        name={products}
+                        value={products}
+                        onChange={handleChange}
+                      />
+                      <label htmlFor={products}> {products}</label>
+                    </div>
+                  ))}
+                </div>
+                <div className="checkboxColumn">
+                  {productsAndUsesArray2.map((products) => (
+                    <div key={products} id={products} className="checkbox">
+                      <input
+                        type="checkbox"
+                        id={products}
+                        name={products}
+                        value={products}
+                        onChange={handleChange}
+                      />
+                      <label htmlFor={products}> {products}</label>
+                    </div>
+                  ))}
+                </div>
               </AccordionItemPanel>
             </AccordionItem>
           </Accordion>

@@ -4,6 +4,7 @@
 
 .carouselCard {
   padding-top: 3vh;
+  width: 400;
 }
 
 .carouselCard:hover {
@@ -11,7 +12,7 @@
 }
 
 .carouselImage {
-  height: 20vh;
+  height: 180px;
   width: 15vw;
   object-fit: cover;
 }
@@ -26,23 +27,47 @@
 }
 
 
+@media screen and (max-width: 1024px) {
+  .carouselImage {
+    width: 18vw;
+    height: 160px
+  }
+}
+
 @media screen and (max-width: 768px) {
   .carousel {
     width: 80vw;
   }
+  .carouselImage {
+    width: 23vw;
+  }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 600px) {
+  .carouselImage {
+    width: 30vw;
+  }
+}
+
+@media screen and (max-width: 480px) {
   .carousel {
     height: 40vh;
   }
   .carouselImage {
     height: 40vh;
+    width: 45vw;
   }
   .header {
-    padding: 8vh 10vw;
+    padding: 20px 0;
   }
   .hero {
     height: 80vh;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .carouselImage {
+    height: 40vh;
+    width: 85vw;
   }
 }
