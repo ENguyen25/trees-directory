@@ -7,7 +7,7 @@ import TabGallery from "../TabGallery/TabGallery";
 import NavBar from "../NavBar/NavBar";
 import "./Profile.css";
 
-const base = new Airtable({ apiKey: "keycVUqNgXbPQmTBb" }).base(
+const base = new Airtable({ apiKey: "keydLeTvuj6nDvKeT" }).base(
   "apppAm9jBXoifxazs"
 );
 
