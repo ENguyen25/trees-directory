@@ -17,7 +17,7 @@ import {
   AccordionItemPanel
 } from "react-accessible-accordion";
 
-const base = new Airtable({ apiKey: "keycVUqNgXbPQmTBb" }).base(
+const base = new Airtable({ apiKey: "keydLeTvuj6nDvKeT" }).base(
   "apppAm9jBXoifxazs"
 );
 
