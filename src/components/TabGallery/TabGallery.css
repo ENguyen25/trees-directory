@@ -12,13 +12,45 @@
   width: 40vw;
 }
 
+.tabImageContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
 .tabImage {
-  width: 30%;
+  width: 32%;
+  height: 172px;
+  object-fit: cover;
   margin-top: 2%;
+}
+
+@media screen and (max-width: 1024px) {
+  .tabImage {
+    height: 131px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .tabImage {
+    height: 98px;
+  }
 }
 
 @media screen and (max-width: 600px) {
   .enlargedImage {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .tabImage {
+    height: 97px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .tabImage {
+    height: 82px;
   }
 }

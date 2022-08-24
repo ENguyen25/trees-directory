@@ -6,67 +6,6 @@ import "./Trees.css";
 const Trees = ({ treeData }) => {
   const [fetchedImages, setFetchedImages] = useState([]);
 
-  // if (treeData) {
-  //   const fetchImages = () => {
-  //     if (treeData.fields["Image of tree"] !== undefined) {
-  //       treeData.fields["Image of tree"].map((image) => {
-  //         console.log(JSON.stringify(image.thumbnails.large.url));
-  //         setFetchedImages((current) => [
-  //           ...current,
-  //           image.thumbnails.large.url,
-  //         ]);
-  //       });
-  //     }
-  //     if (treeData.fields["Image of Flower"] !== undefined) {
-  //       treeData.fields["Image of Flower"].map((image) => {
-  //         console.log(JSON.stringify(image.thumbnails.large.url));
-  //         setFetchedImages((current) => [
-  //           ...current,
-  //           image.thumbnails.large.url,
-  //         ]);
-  //       });
-  //     }
-  //     if (treeData.fields["Image of fruit"] !== undefined) {
-  //       treeData.fields["Image of fruit"].map((image) => {
-  //         console.log(JSON.stringify(image.thumbnails.large.url));
-  //         setFetchedImages((current) => [
-  //           ...current,
-  //           image.thumbnails.large.url,
-  //         ]);
-  //       });
-  //     }
-  //     if (treeData.fields["Image of Seed"] !== undefined) {
-  //       treeData.fields["Image of Seed"].map((image) => {
-  //         console.log(JSON.stringify(image.thumbnails.large.url));
-  //         setFetchedImages((current) => [
-  //           ...current,
-  //           image.thumbnails.large.url,
-  //         ]);
-  //       });
-  //     }
-  //     if (treeData.fields["Image of Leaf"] !== undefined) {
-  //       treeData.fields["Image of Leaf"].map((image) => {
-  //         console.log(JSON.stringify(image.thumbnails.large.url));
-  //         setFetchedImages((current) => [
-  //           ...current,
-  //           image.thumbnails.large.url,
-  //         ]);
-  //       });
-  //     }
-  //     if (treeData.fields["Illustration"] !== undefined) {
-  //       treeData.fields["Illustration"].map((image) => {
-  //         console.log(JSON.stringify(image.thumbnails.large.url));
-  //         setFetchedImages((current) => [
-  //           ...current,
-  //           image.thumbnails.large.url,
-  //         ]);
-  //       });
-  //     }
-  //   };
-
-  //   fetchImages();
-  // }
-
   return (
     <div className="searchCard">
       <div className="cardImage">

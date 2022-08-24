@@ -54,20 +54,17 @@
     height: 40vh;
   }
   .carouselImage {
-    height: 40vh;
+    height: 30vh;
     width: 45vw;
   }
   .header {
     padding: 20px 0;
   }
-  .hero {
-    height: 80vh;
-  }
 }
 
 @media screen and (max-width: 375px) {
   .carouselImage {
-    height: 40vh;
-    width: 85vw;
+    height: 30vh;
+    width: 60vw;
   }
 }

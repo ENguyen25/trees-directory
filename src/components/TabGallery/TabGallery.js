@@ -11,14 +11,16 @@ const TabGallery = ({ images }) => {
       <div className="enlargedImageContainer">
         <img className="enlargedImage" src={imageSrc} alt="plant image" />
       </div>
-      {fetchedImages.map((image) => (
-        <img
-          className="tabImage"
-          src={image}
-          alt="plant image"
-          onClick={() => setImageSrc(image)}
-        />
-      ))}
+      <div className="tabImageContainer">
+        {fetchedImages.map((image) => (
+          <img
+            className="tabImage"
+            src={image}
+            alt="plant image"
+            onClick={() => setImageSrc(image)}
+          />
+        ))}
+      </div>
     </div>
   );
 };
